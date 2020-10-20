@@ -1,4 +1,4 @@
-package Otello;
+package Othello;
 
 public class Disk {
 	private Color color;
@@ -12,7 +12,10 @@ public class Disk {
 	}
 	
 	public void changeColor() {
-		
+		if(color==Color.Black)
+			color=Color.White;
+		else
+			color=Color.Black;
 	}
 	
 }

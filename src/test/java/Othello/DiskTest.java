@@ -1,4 +1,4 @@
-package Otello;
+package Othello;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +19,9 @@ public class DiskTest {
 	public void changeColorTest() {
 		white_disk.changeColor();
 		assertEquals(Color.Black, white_disk.getColor());
+		black_disk.changeColor();
+		assertEquals(Color.White, black_disk.getColor());
+		
 	}
 
 }
