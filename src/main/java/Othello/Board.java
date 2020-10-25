@@ -38,6 +38,6 @@ public class Board {
 	}
 	
 	public boolean isFull() {
-		return false;
+		return totalWhites + totalBlacks == 64;
 	}
 }
