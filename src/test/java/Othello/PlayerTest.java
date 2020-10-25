@@ -17,7 +17,7 @@ public class PlayerTest {
 		assertEquals(Color.Black, player1.getColor());
 		
 		Player player2 = new Player(Color.White);
-		assertEquals(Color.Black, player2.getColor());
+		assertEquals(Color.White, player2.getColor());
 		
 	}
 
