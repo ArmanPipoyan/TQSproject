@@ -7,7 +7,7 @@ public class Board {
 	private int totalBlacks;
 	
 	public Board() {
-		
+		this.gameBoard = new Disk[8][8];
 	}
 	
 	public Disk[][] getGameBoard(){
