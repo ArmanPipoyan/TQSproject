@@ -32,5 +32,19 @@ public class BoardTest {
 			}
 		}
 	}
+	
+	@Test
+	public void isFullTest() {
+		board.setTotalWhites(25);
+		board.setTotalBlacks(32);
+		boolean res_25W_32B = board.isFull();
+		assertFalse(res_25W_32B);
+		
+		board.setTotalWhites(32);
+		board.setTotalBlacks(32);
+		boolean res_32W_32B = board.isFull();
+		assertTrue(res_32W_32B);
+	}
+	
 }
 		
