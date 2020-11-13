@@ -46,5 +46,12 @@ public class BoardTest {
 		assertTrue(res_32W_32B);
 	}
 	
+	@Test
+	public void updateScoreTest() {
+		board.updateScore();
+		assertEquals(2, board.getTotalBlacks());
+		assertEquals(2, board.getTotalWhites());
+		
+	}
 }
 		

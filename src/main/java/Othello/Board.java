@@ -37,6 +37,10 @@ public class Board {
 		totalBlacks = nBlacks;
 	}
 	
+	public void updateScore() {
+	
+	}
+	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
 	}
