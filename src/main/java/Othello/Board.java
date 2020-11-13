@@ -56,10 +56,36 @@ public class Board {
 	}
 	
 	public boolean outOfLimits(int row, int column) {
-		return ((0 <= row && 0 <= column) && (row < gameBoard.length && column < gameBoard.length));
+		return !((0 <= row && 0 <= column) && (row < gameBoard.length && column < gameBoard.length));
+	}
+	
+	private boolean nextToDisk(int row, int column) {
+		return true;
 	}
 	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
+	}
+	
+	@Override
+	public String toString() {
+		String board = "   A  B  C  D  E  F  G  H\n";
+		for (int i = 0; i < gameBoard.length; i++) {
+			board += ""+(i+1);
+			for (int j = 0; j < gameBoard.length; j++) {
+				if (gameBoard[i][j] == null) {
+					board += "  -";
+				} 
+				else {
+						if (gameBoard[i][j].getColor()==Color.Black) {
+							board += "  B";
+						}else {
+							board += "  W";
+						}
+				}
+			}
+			board += "\n";
+		}
+		return board;
 	}
 }
