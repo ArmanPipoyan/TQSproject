@@ -55,6 +55,8 @@ public class Board {
 		totalWhites = countWhites;
 	}
 	
+	
+	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
 	}
