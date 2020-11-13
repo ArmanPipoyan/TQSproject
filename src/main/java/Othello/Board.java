@@ -55,7 +55,7 @@ public class Board {
 		totalWhites = countWhites;
 	}
 	
-	public boolean outOfLimits(int x, int y) {
+	public boolean outOfLimits(int row, int column) {
 		return true;
 	}
 	

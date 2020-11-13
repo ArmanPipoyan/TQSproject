@@ -56,18 +56,54 @@ public class BoardTest {
 	
 	@Test
 	public void outOfLimitsTest() {
-
-		boolean res_inside = board.outOfLimits(2, 3);
-		assertTrue(res_inside);
+		//position out of board next to corners
+		assertFalse(board.outOfLimits(0, -1));
+		assertFalse(board.outOfLimits(-1, -1));
+		assertFalse(board.outOfLimits(-1, 7));
+		assertFalse(board.outOfLimits(0, 8));
+		assertFalse(board.outOfLimits(-1, 8));
+		assertFalse(board.outOfLimits(8, 0));
+		assertFalse(board.outOfLimits(7, -1));
+		assertFalse(board.outOfLimits(8, -1));
+		assertFalse(board.outOfLimits(7, 8));
+		assertFalse(board.outOfLimits(8, 7));
+		assertFalse(board.outOfLimits(8, 8));	
 		
-		boolean res_x_out_y_inside = board.outOfLimits(9, 4);
-		assertFalse(res_x_out_y_inside);
+		//position in corners
+		assertTrue(board.outOfLimits(0, 0));
+		assertTrue(board.outOfLimits(0, 7));
+		assertTrue(board.outOfLimits(7, 0));
+		assertTrue(board.outOfLimits(7, 7));
 		
-		boolean res_x_inside_y_out = board.outOfLimits(2, 10);
-		assertFalse(res_x_out_y_inside);
+		//position out of board next to laterals
+		assertFalse(board.outOfLimits(-3, 0));
+		assertFalse(board.outOfLimits(0, -3));
+		assertFalse(board.outOfLimits(12, 0));
+		assertFalse(board.outOfLimits(0, 9));
+		assertFalse(board.outOfLimits(7, -3));
+		assertFalse(board.outOfLimits(-3, 7));
+		assertFalse(board.outOfLimits(7, 11));
+		assertFalse(board.outOfLimits(9, 7));
 		
-		boolean res_x_out_y_out = board.outOfLimits(9, 9);
-		assertFalse(res_x_out_y_out);
+		//position in laterals
+		assertTrue(board.outOfLimits(0, 3));
+		assertTrue(board.outOfLimits(3, 0));
+		assertTrue(board.outOfLimits(7, 3));
+		assertTrue(board.outOfLimits(3, 7));
+		
+		//position out of board with row or column in central cells
+		assertFalse(board.outOfLimits(10, -3));
+		assertFalse(board.outOfLimits(-5, 7));
+		assertFalse(board.outOfLimits(-0, 11));
+		assertFalse(board.outOfLimits(-4, 9));
+		assertFalse(board.outOfLimits(7, -3));
+		assertFalse(board.outOfLimits(10, -3));
+		assertFalse(board.outOfLimits(9, 7));
+		
+		//position with all coordinates out of board
+		assertFalse(board.outOfLimits(-2, -4));
+		assertFalse(board.outOfLimits(9, 10));
+		
 		
 	}
 	
