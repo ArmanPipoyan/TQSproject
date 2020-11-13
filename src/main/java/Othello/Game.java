@@ -5,7 +5,10 @@ public class Game {
 	private Player[] players;
 	
 	public Game() {
-	
+	this.board = new Board();
+	this.players = new Player[2];
+	this.players[0] =  new Player(Color.Black);
+	this.players[1] = new Player(Color.White);
 	}
 	
 	public Player[] getPlayers() {
