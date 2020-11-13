@@ -60,7 +60,35 @@ public class Board {
 	}
 	
 	public boolean nextToDisk(int row, int column) {
-		return true;
+		boolean nextTo = false;
+	
+		if (outOfLimits(row, column) == false ) {
+			if (row-1 >= 0 && gameBoard[row-1][column] != null) {
+				nextTo = true;
+			}
+			if (row+1 <= 7 && gameBoard[row+1][column] != null) {
+				nextTo = true;
+			}
+			if (column-1 >= 0 && gameBoard[row][column-1] != null) {
+				nextTo = true;
+			}
+			if (column+1 <= 7 && gameBoard[row][column+1] != null) {
+				nextTo = true;
+			}
+			if (row+1 <= 7 &&column+1 <= 7 && gameBoard[row+1][column+1] != null) {
+				nextTo = true;
+			}
+			if (row-1 >= 0 &&column-1 >= 0 && gameBoard[row-1][column-1] != null) {
+				nextTo = true;
+			}
+			if (row+1 <=7 &&column-1 >= 0 && gameBoard[row+1][column-1] != null) {
+				nextTo = true;
+			}
+			if (row-1 >= 0 &&column+1 <= 7 && gameBoard[row-1][column+1] != null) {
+				nextTo = true;
+			}
+		}
+		return nextTo;
 	}
 	
 	public boolean isFull() {

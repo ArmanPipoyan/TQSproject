@@ -109,7 +109,6 @@ public class BoardTest {
 	@Test
 	public void nextToDiskTest() {
 		//Only let the disk be placed if there is an opponent next to it
-				Board board = new Board();
 				System.out.println(board);
 
 				//positions where you should let black disks
