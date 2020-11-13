@@ -12,10 +12,11 @@ public class Disk {
 	}
 	
 	public void changeColor() {
-		if(color==Color.Black)
+		if(color==Color.Black) {
 			color=Color.White;
-		else
+		}else {
 			color=Color.Black;
+		}
 	}
 	
 }

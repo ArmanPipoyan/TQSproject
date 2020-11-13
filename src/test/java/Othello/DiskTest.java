@@ -21,7 +21,5 @@ public class DiskTest {
 		assertEquals(Color.Black, white_disk.getColor());
 		black_disk.changeColor();
 		assertEquals(Color.White, black_disk.getColor());
-		
 	}
-
 }
