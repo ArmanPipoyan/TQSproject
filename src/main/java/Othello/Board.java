@@ -13,8 +13,8 @@ public class Board {
 		this.gameBoard[4][3] = new Disk(Color.Black);
 		this.gameBoard[4][4] = new Disk(Color.White);
 		
-		this.totalBlacks = 0;
-		this.totalWhites = 0;
+		this.totalBlacks = 2;
+		this.totalWhites = 2;
 	}
 	
 	public Disk[][] getGameBoard(){
@@ -38,7 +38,21 @@ public class Board {
 	}
 	
 	public void updateScore() {
-	
+		int countBlacks = 0;
+		int countWhites = 0;
+		for(int i=0; i<gameBoard.length; i++) {
+			for(int j=0; j<gameBoard.length; j++) {
+				if(gameBoard[i][j] != null) {
+					if(gameBoard[i][j].getColor() == Color.Black) {
+						countBlacks++;
+					}else {
+						countWhites++;
+					}		
+				}	
+			}
+		}
+		totalBlacks = countBlacks;
+		totalWhites = countWhites;
 	}
 	
 	public boolean isFull() {
