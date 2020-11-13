@@ -59,7 +59,7 @@ public class Board {
 		return !((0 <= row && 0 <= column) && (row < gameBoard.length && column < gameBoard.length));
 	}
 	
-	private boolean nextToDisk(int row, int column) {
+	public boolean nextToDisk(int row, int column) {
 		return true;
 	}
 	

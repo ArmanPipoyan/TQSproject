@@ -106,5 +106,63 @@ public class BoardTest {
 		
 	}
 	
+	@Test
+	public void nextToDiskTest() {
+		//Only let the disk be placed if there is an opponent next to it
+				Board board = new Board();
+				System.out.println(board);
+
+				//positions where you should let black disks
+				assertTrue(board.nextToDisk(2, 3));
+				assertTrue(board.nextToDisk(3, 2));
+				assertTrue(board.nextToDisk(4, 5));
+				assertTrue(board.nextToDisk(5, 4));
+				
+				//corners can also be placed
+				assertTrue(board.nextToDisk(2, 2));
+				assertTrue(board.nextToDisk(5, 5));
+				
+				//limit positions
+				assertFalse(board.nextToDisk(0, 0));
+				assertFalse(board.nextToDisk(0, 1));
+				assertFalse(board.nextToDisk(0, 2));
+				assertFalse(board.nextToDisk(0, 3));
+				assertFalse(board.nextToDisk(0, 4));
+				assertFalse(board.nextToDisk(0, 5));
+				assertFalse(board.nextToDisk(0, 6));
+				assertFalse(board.nextToDisk(0, 7));
+				
+				//
+				assertFalse(board.nextToDisk(1, 0));
+				assertFalse(board.nextToDisk(2, 0));
+				assertFalse(board.nextToDisk(3, 0));
+				assertFalse(board.nextToDisk(4, 0));
+				assertFalse(board.nextToDisk(5, 0));
+				assertFalse(board.nextToDisk(6, 0));
+				assertFalse(board.nextToDisk(7, 0));
+				
+				//
+				assertFalse(board.nextToDisk(0, 7));
+				assertFalse(board.nextToDisk(1, 7));
+				assertFalse(board.nextToDisk(2, 7));
+				assertFalse(board.nextToDisk(3, 7));
+				assertFalse(board.nextToDisk(4, 7));
+				assertFalse(board.nextToDisk(5, 7));
+				assertFalse(board.nextToDisk(6, 7));
+				assertFalse(board.nextToDisk(7, 7));
+				
+				//
+				assertFalse(board.nextToDisk(7, 0));
+				assertFalse(board.nextToDisk(7, 1));
+				assertFalse(board.nextToDisk(7, 2));
+				assertFalse(board.nextToDisk(7, 3));
+				assertFalse(board.nextToDisk(7, 4));
+				assertFalse(board.nextToDisk(7, 5));
+				assertFalse(board.nextToDisk(7, 6));
+				assertFalse(board.nextToDisk(7, 7));
+
+	
+	}
+	
 }
 		
