@@ -56,7 +56,7 @@ public class Board {
 	}
 	
 	public boolean outOfLimits(int row, int column) {
-		return true;
+		return ((0 <= row && 0 <= column) && (row < gameBoard.length && column < gameBoard.length));
 	}
 	
 	public boolean isFull() {
