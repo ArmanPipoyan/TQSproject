@@ -53,5 +53,23 @@ public class BoardTest {
 		assertEquals(2, board.getTotalWhites());
 		
 	}
+	
+	@Test
+	public void outOfLimitsTest() {
+
+		boolean res_inside = board.outOfLimits(2, 3);
+		assertTrue(res_inside);
+		
+		boolean res_x_out_y_inside = board.outOfLimits(9, 4);
+		assertFalse(res_x_out_y_inside);
+		
+		boolean res_x_inside_y_out = board.outOfLimits(2, 10);
+		assertFalse(res_x_out_y_inside);
+		
+		boolean res_x_out_y_out = board.outOfLimits(9, 9);
+		assertFalse(res_x_out_y_out);
+		
+	}
+	
 }
 		
