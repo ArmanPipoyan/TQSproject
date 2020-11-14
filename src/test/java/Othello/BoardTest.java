@@ -48,9 +48,22 @@ public class BoardTest {
 	
 	@Test
 	public void updateScoreTest() {
+		//Score at initial state 
 		board.updateScore();
 		assertEquals(2, board.getTotalBlacks());
 		assertEquals(2, board.getTotalWhites());
+		
+		//Score after fail placing disk attempt  
+		board.placeDisk(1, 1, Color.Black);
+		board.updateScore();
+		assertEquals(2, board.getTotalBlacks());
+		assertEquals(2, board.getTotalWhites());
+		
+		//Score after correct placing disk attempt  
+		board.placeDisk(2, 3, Color.Black);
+		board.updateScore();
+	    assertEquals(4, board.getTotalBlacks());
+		assertEquals(1, board.getTotalWhites());
 	}
 	
 	@Test
