@@ -164,7 +164,7 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void turnedDisksTest() {
+	public void positionsToSameColorTest() {
 		
 		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down));
 		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_left_diagonal));
