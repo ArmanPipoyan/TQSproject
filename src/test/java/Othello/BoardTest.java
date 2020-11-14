@@ -68,6 +68,7 @@ public class BoardTest {
 	
 	@Test
 	public void outOfLimitsTest() {
+		//Black box test
 		//position out of board next to corners
 		assertTrue(board.outOfLimits(0, -1));
 		assertTrue(board.outOfLimits(-1, -1));
