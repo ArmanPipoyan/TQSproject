@@ -91,7 +91,7 @@ public class Board {
 		return nextTo;
 	}
 	
-	public int positionsToSameColor(int row, int column, Color color, Direction dir){
+	public int positionsToSameColor(int row, int column, Color color, Direction dir, boolean turn){
 
 	int row1 = 0;
 	int col1 = 0;
@@ -126,25 +126,117 @@ public class Board {
 				break;
 			}
 			
-			if (outOfLimits(row, column) || this.gameBoard[row][column] == null) {
+			if (outOfLimits(row, column) || gameBoard[row][column] == null) {
 				return -1;
 			}
 			
-			if (this.gameBoard[row][column].getColor() == color) {
+			if (gameBoard[row][column].getColor() == color) {
 				return 0;
 			}
 			
-			int check = positionsToSameColor(row + row1, column + col1, color, dir);
+			int check = positionsToSameColor(row + row1, column + col1, color, dir, turn);
 			if (check<0) {
 				return -1;
 			}
-			
-			this.gameBoard[row][column].changeColor();
+			if(turn == true) {
+				gameBoard[row][column].changeColor();
+			}
 			return check+1;
 		}
 	
-	public boolean checkPlaceDisk(int row, int column, Color color) {
-		return false;
+	public boolean checkPlaceDisk(int row, int column, Color color, boolean turn) {
+		boolean canPlace = false;
+			boolean nextToDisk = nextToDisk(row, column);
+			
+			if(nextToDisk == true) {
+				//Up
+				if(!outOfLimits(row-1, column)==true
+						&& gameBoard[row-1][column] != null){
+					if(gameBoard[row-1][column].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+				//Down	
+			    if(!outOfLimits(row+1, column)==true
+			    		&& gameBoard[row+1][column] != null ) {
+					if(gameBoard[row+1][column].getColor() != color)  {
+						canPlace = true;
+					}
+			    }
+				//Left
+			    if(!outOfLimits(row, column-1) == true
+			    	&& gameBoard[row][column-1] != null) {
+			 
+					if(gameBoard[row][column-1].getColor() != color)  {
+						canPlace = true;
+					}
+			    }
+			    //Right
+			    if(!outOfLimits(row, column+1)==true
+			       && gameBoard[row][column+1] != null) {
+					if(gameBoard[row][column+1].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+			    //Down Left Diagonal
+			    if(!outOfLimits(row+1, column-1)==true
+			    	&& gameBoard[row+1][column-1] != null){
+			    	
+					if(gameBoard[row+1][column-1].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+			    //Down Right Diagonal
+			    if(!outOfLimits(row+1, column+1)==true
+			    		&& gameBoard[row+1][column+1] != null) {
+					if(gameBoard[row+1][column+1].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+			    //Up Left Diagonal
+			    if(!outOfLimits(row-1, column-1)==true
+			    		&& gameBoard[row-1][column-1] != null) {
+					if(gameBoard[row-1][column-1].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+			    //Up Right Diagonal
+			    if(!outOfLimits(row-1, column+1)==true
+			    		&& gameBoard[row-1][column+1] != null) {
+					if(gameBoard[row-1][column+1].getColor() != color)  {
+						canPlace = true;
+					}
+				}
+			}
+			
+			if (canPlace) {
+				int cells [] = new int[8];
+				cells[0] = positionsToSameColor(row-1, column, color, Direction.up, turn);
+				cells[1] = positionsToSameColor(row+1, column, color, Direction.down, turn);
+				cells[2] = positionsToSameColor(row, column-1, color, Direction.left, turn);
+				cells[3] = positionsToSameColor(row, column+1, color, Direction.right, turn);
+				cells[4] = positionsToSameColor(row-1, column-1, color, Direction.up_left_diagonal, turn);
+				cells[5] = positionsToSameColor(row-1, column+1, color, Direction.up_right_diagonal, turn);
+				cells[6] = positionsToSameColor(row+1, column-1, color, Direction.down_left_diagonal, turn);
+				cells[7] = positionsToSameColor(row+1, column+1, color, Direction.down_right_diagonal, turn);
+				
+				int check = 0;
+				for (int cell : cells) {
+					if (cell >0) {
+						
+						check =+ cell;
+					}
+				}
+				if (check <= 0) {
+					canPlace = false;
+				}
+				else {
+					canPlace = true;
+				}
+			}
+
+			return canPlace;
+	
 	}
 	
 	public boolean isFull() {

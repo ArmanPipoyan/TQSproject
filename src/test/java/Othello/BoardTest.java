@@ -166,73 +166,73 @@ public class BoardTest {
 	@Test
 	public void positionsToSameColorTest() {
 		
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_left_diagonal));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.left));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.right));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down, false));
+		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.left, false));
+		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.right, false));
+		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_left_diagonal));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.left));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.right));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_left_diagonal));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.left));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.right));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down, false));
+		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.left, false));
+		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.right, false));
+		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_left_diagonal));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.left));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.right));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down, false));
+		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.left, false));
+		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.right, false));
+		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_left_diagonal));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.left));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.right));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(5, 2, Color.Black, Direction.up_right_diagonal));
+		assertEquals(-1, board.positionsToSameColor(5, 2, Color.Black, Direction.up_right_diagonal, false));
 	}
 	
 	@Test
 	public void checkPlaceDiskTest(){
 		
 		////positions where we can place a white disk but we can't place a black disk
-		assertFalse(board.checkPlaceDisk(4, 2, Color.Black));
-		assertFalse(board.checkPlaceDisk(5, 3, Color.Black));
-		assertFalse(board.checkPlaceDisk(2, 4, Color.Black));
-		assertFalse(board.checkPlaceDisk(3, 5, Color.Black));
+		assertFalse(board.checkPlaceDisk(4, 2, Color.Black, false));
+		assertFalse(board.checkPlaceDisk(5, 3, Color.Black, false));
+		assertFalse(board.checkPlaceDisk(2, 4, Color.Black, false));
+		assertFalse(board.checkPlaceDisk(3, 5, Color.Black, false));
 		
 		//positions next to white disk but on lines it doesn't have another disk of the same color to meet the condition 
-		assertFalse(board.checkPlaceDisk(5, 2, Color.Black));
-		assertFalse(board.checkPlaceDisk(2, 5, Color.Black));
+		assertFalse(board.checkPlaceDisk(5, 2, Color.Black, false));
+		assertFalse(board.checkPlaceDisk(2, 5, Color.Black, false));
 		
 		//position where we can put a black disk
-		assertTrue(board.checkPlaceDisk(2, 3, Color.Black));
-		assertTrue(board.checkPlaceDisk(3, 2, Color.Black));
-		assertTrue(board.checkPlaceDisk(4, 5, Color.Black));
-		assertTrue(board.checkPlaceDisk(5, 4, Color.Black));
+		assertTrue(board.checkPlaceDisk(2, 3, Color.Black, false));
+		assertTrue(board.checkPlaceDisk(3, 2, Color.Black, false));
+		assertTrue(board.checkPlaceDisk(4, 5, Color.Black, false));
+		assertTrue(board.checkPlaceDisk(5, 4, Color.Black, false));
 		
 		//positions where we can place a black disk but we can't place a white disk
-		assertFalse(board.checkPlaceDisk(2, 3, Color.White));
-		assertFalse(board.checkPlaceDisk(3, 2, Color.White));
-	    assertFalse(board.checkPlaceDisk(4, 5, Color.White));
-	    assertFalse(board.checkPlaceDisk(5, 4, Color.White));
+		assertFalse(board.checkPlaceDisk(2, 3, Color.White, false));
+		assertFalse(board.checkPlaceDisk(3, 2, Color.White, false));
+	    assertFalse(board.checkPlaceDisk(4, 5, Color.White, false));
+	    assertFalse(board.checkPlaceDisk(5, 4, Color.White, false));
 				
 		//positions next to black disk but on lines it doesn't have another disk of the same color to meet the condition 
-		assertFalse(board.checkPlaceDisk(2, 2, Color.White));
-		assertFalse(board.checkPlaceDisk(5, 5, Color.White));
+		assertFalse(board.checkPlaceDisk(2, 2, Color.White, false));
+		assertFalse(board.checkPlaceDisk(5, 5, Color.White, false));
 		
 		//position where we can put a white disk
-		assertTrue(board.checkPlaceDisk(4, 2, Color.White));
-		assertTrue(board.checkPlaceDisk(5, 3, Color.White));
-		assertTrue(board.checkPlaceDisk(2, 4, Color.White));
-		assertTrue(board.checkPlaceDisk(3, 5, Color.White));
+		assertTrue(board.checkPlaceDisk(4, 2, Color.White, false));
+		assertTrue(board.checkPlaceDisk(5, 3, Color.White, false));
+		assertTrue(board.checkPlaceDisk(2, 4, Color.White, false));
+		assertTrue(board.checkPlaceDisk(3, 5, Color.White, false));
 		
 	}
 		
