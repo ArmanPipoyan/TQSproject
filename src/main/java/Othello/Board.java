@@ -91,10 +91,58 @@ public class Board {
 		return nextTo;
 	}
 	
-	public int changeColor(int row, int column, Color color, Direction dir, 
-			boolean change){
-		return 0;
-	}
+	public int positionsToSameColor(int row, int column, Color color, Direction dir){
+
+	int row1 = 0;
+	int col1 = 0;
+			switch(dir) {
+			case up:
+				row1 = -1;
+				break;
+			case down:
+				row1 = 1;
+				break;
+			case left:
+				col1 = -1;
+				break;
+			case right:
+				col1 = 1;
+				break;
+			case up_left_diagonal:
+				row1 = -1;
+				col1 = -1;
+				break;
+			case up_right_diagonal:
+				row1 = -1;
+				col1 = +1;
+				break;
+			case down_left_diagonal:
+				row1 = +1;
+				col1 = -1;
+				break;
+			case down_right_diagonal:
+				row1 = +1;
+				col1 = +1;
+				break;
+			}
+			
+			if (outOfLimits(row, column) || this.gameBoard[row][column] == null) {
+				return -1;
+			}
+			
+			if (this.gameBoard[row][column].getColor() == color) {
+				return 0;
+			}
+			
+			int check = positionsToSameColor(row + row1, column + col1, color, dir);
+			if (check<0) {
+				return -1;
+			}
+			
+			this.gameBoard[row][column].changeColor();
+			
+			return check+1;
+		}
 	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
