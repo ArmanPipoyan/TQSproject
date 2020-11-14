@@ -240,7 +240,20 @@ public class Board {
 	}
 	
 	public boolean placeDisk(int row, int column, Color color) {
-		return true;
+		boolean turn = true;
+		boolean diskPlaced = false;
+		
+		if (checkPlaceDisk(row, column, color, !turn) == true){
+			gameBoard[row][column] = new Disk(color);
+			diskPlaced = checkPlaceDisk(row, column, color, turn);
+			updateScore();
+			return diskPlaced;
+			
+		}
+		else {
+			return diskPlaced;
+			
+		}
 	}
 	
 	public boolean isFull() {
