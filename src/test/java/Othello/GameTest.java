@@ -15,8 +15,8 @@ public class GameTest {
 
 	@Test
 	public void GameConstructorTest() {
-		Player player1 = othello.getPlayers()[0];
-		Player player2 = othello.getPlayers()[1];
+		Player player1 = othello.getPlayer(0);
+		Player player2 = othello.getPlayer(1);
 		
 		assertEquals(Color.Black, player1.getColor());
 		assertEquals(Color.White, player2.getColor());

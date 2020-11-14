@@ -1,6 +1,7 @@
 package Othello;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class KeyboardInput {
 	/*
@@ -15,8 +16,16 @@ public class KeyboardInput {
 		input = new Scanner(System.in);
 	}
 	
-	protected int integersCoordinates(Color color) {
-		return 0;
+	protected Coordinate integersCoordinates() {
+		try {
+			int coordinate_x =input.nextInt();
+			int coordinate_y =input.nextInt();
+			return new Coordinate(coordinate_x, coordinate_y);
+		} catch (InputMismatchException ime) {
+			 System.out.println("Only integers can be entered");
+			 input.next();
+			 return new Coordinate(-1, -1);
+		}
 	}
 
 }

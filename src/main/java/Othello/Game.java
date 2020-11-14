@@ -11,8 +11,20 @@ public class Game {
 	this.players[1] = new Player(Color.White);
 	}
 	
-	public Player[] getPlayers() {
-		return players;
+	public Player getPlayer(int numPlayer) {
+		return players[numPlayer];
+	}
+	
+	public Board getGameBoard() {
+		return board;
+	}
+	
+	public int getTotalWhites() {
+		return board.getTotalWhites();
+	}
+	
+	public int getTotalBlacks() {
+		return board.getTotalBlacks();
 	}
 
 }
