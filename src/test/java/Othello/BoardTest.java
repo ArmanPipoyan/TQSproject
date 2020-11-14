@@ -235,6 +235,31 @@ public class BoardTest {
 		assertTrue(board.checkPlaceDisk(3, 5, Color.White, false));
 		
 	}
+	
+	@Test
+	public void placeDiskTest(){
+		
+		//we add a black disk in a position where we can't.
+		assertFalse(board.placeDisk(3, 3, Color.Black));
+		assertFalse(board.placeDisk(2, 2, Color.Black));
+		
+		//We add a Black disk in a position where we can and check the changes that are made on the board.
+		assertTrue(board.placeDisk(2, 3, Color.Black));
+		assertNotEquals(Color.White, auxBoard[3][3].getColor());
+		assertEquals(Color.Black, auxBoard[2][3].getColor());
+		assertEquals(Color.Black, auxBoard[3][3].getColor());
+		
+		//we add a white disk in a position where we can't.
+		assertFalse(board.placeDisk(3, 3, Color.White));
+		assertFalse(board.placeDisk(2, 3, Color.White));
+		
+		//We add a Black disk in a position where we can and check the changes that are made on the board.
+		assertTrue(board.placeDisk(2, 2, Color.White));
+		assertNotEquals(Color.Black, auxBoard[3][3].getColor());
+		assertEquals(Color.White, auxBoard[2][2].getColor());
+		assertEquals(Color.White, auxBoard[3][3].getColor());
+	
+	}
 		
 }
 		

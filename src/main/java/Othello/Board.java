@@ -239,6 +239,10 @@ public class Board {
 	
 	}
 	
+	public boolean placeDisk(int row, int column, Color color) {
+		return true;
+	}
+	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
 	}
