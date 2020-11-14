@@ -1,11 +1,10 @@
 package Othello;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class KeyboardInput {
 	/*
-	 * Control the coordinates (x, y) input by the user
+	 * Control the coordinates (x, y) inputted by the user
 	 * 
 	 */
 
