@@ -13,8 +13,10 @@ public class KeyboardInputMockTest {
 
 	@Test
 	public void integersCoordinatesTest() {
-		KeyboardInput input = new KeyboardInputMock();
+		
 		Othello othello = new Othello();
+		
+		KeyboardInput input = new KeyboardInputMock();
 		
 		othello.setInput(input);
 		

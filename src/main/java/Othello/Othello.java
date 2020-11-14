@@ -2,25 +2,22 @@ package Othello;
 
 public class Othello{
 	
-	private Game othello; 
-	private int playerTurn;
-	private int coordinate_x;
-	private int coordinate_y;
-	private KeyboardInput input;
+	private static Game othello = new Game(); 
+	static int playerTurn = 0;
+	private static int coordinate_x;
+	private static int coordinate_y;
+	static KeyboardInput input = new KeyboardInput();
 
 	public Othello() {
-		othello = new Game();
-		playerTurn = 0;
-		input = new KeyboardInput();
+		
 	}
 	
 	public static void main(String[] args) {
-		Othello othello = new Othello();
-		othello.play();
+		play();
 	}
 
-	public void play() {
-		System.out.println("------------Othello------------#");
+	public static void play() {
+		System.out.println("#------------Othello------------#");
 		
 		int totalWhites = othello.getTotalWhites();
 		int totalBlacks = othello.getTotalBlacks();
