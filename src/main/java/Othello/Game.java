@@ -19,12 +19,5 @@ public class Game {
 		return board;
 	}
 	
-	public int getTotalWhites() {
-		return board.getTotalWhites();
-	}
-	
-	public int getTotalBlacks() {
-		return board.getTotalBlacks();
-	}
 
 }

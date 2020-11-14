@@ -11,6 +11,8 @@ public class KeyboardInputMock extends KeyboardInput {
 			
 		coordinates.add(new Coordinate(-2, 80));
 		
+		coordinates.add(new Coordinate(-1, -1));
+		
 		coordinates.add(new Coordinate(6, 5));
 		
 		coordinates.add(new Coordinate(4, 6));
@@ -134,11 +136,9 @@ public class KeyboardInputMock extends KeyboardInput {
 		}
 		
 		protected Coordinate integersCoordinates() {
-			Coordinate coordinate = coordinates.get(0);
+			Coordinate coordinate = new Coordinate(coordinates.get(0).x, coordinates.get(0).y);
 			coordinates.remove(0);
-			System.err.println(coordinate);
 			return coordinate;	
 		}
 
  }
-

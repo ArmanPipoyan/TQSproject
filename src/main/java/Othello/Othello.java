@@ -7,38 +7,32 @@ public class Othello{
 	private static int coordinate_x;
 	private static int coordinate_y;
 	static KeyboardInput input = new KeyboardInput();
+	private static Coordinate Valors = new Coordinate(coordinate_x, coordinate_y);
 
-	public Othello() {
-		
-	}
 	
-	public static void main(String[] args) {
-		play();
-	}
-
-	public static void play() {
-		System.out.println("#------------Othello------------#");
-		
-		int totalWhites = othello.getTotalWhites();
-		int totalBlacks = othello.getTotalBlacks();
-		Color color;
+	public void play() {
+		System.out.println("------------Othello------------");
+		int totalWhites = othello.getGameBoard().getTotalWhites();
+		int totalBlacks = othello.getGameBoard().getTotalBlacks();
+		System.out.println("Black disks: "+totalBlacks+" White disks: "+totalWhites);
 		System.out.println("");
 		System.out.println(othello.getGameBoard());
+		Color color;
 		Player currentPlayer;
-		
 		while (othello.getGameBoard().isFull() == false) {
-			currentPlayer = othello.getPlayer(playerTurn);
-			color = currentPlayer.getColor().equals(Color.Black) ? Color.Black : Color.White;
+			currentPlayer =  BuscaJugador();
+			color = BuscaColor(currentPlayer);
 			
 			System.out.println("Turn of Player: " + (playerTurn+1) + " ("+color+")");
 			System.out.println("Input the cell where you can place the Disk (row, column): ");
-			coordinate_x = input.integersCoordinates().getX();
-			coordinate_y = input.integersCoordinates().getY();
 			
-			while(coordinate_x ==-1 || coordinate_y == -1) {
+			obtenerValors();
+			System.out.println(coordinate_x+ ", " + coordinate_y);
+			
+			while(!checkCoordinates(coordinate_x, coordinate_y)) {
 				System.out.println("Input the cell where you can place the Disk (row, column): ");
-				coordinate_x = input.integersCoordinates().getX();
-				coordinate_y = input.integersCoordinates().getY();
+				obtenerValors();
+				System.out.println(coordinate_x+ ", " + coordinate_y);
 			}
 			
 			boolean disk = othello.getGameBoard().placeDisk(coordinate_x-1, coordinate_y-1, color);
@@ -46,19 +40,19 @@ public class Othello{
 			while(disk == false) {
 				System.out.println("You can't place the disk here!");
 				System.out.println("Input the cell where you can place the Disk (row, column): ");
-				coordinate_x = input.integersCoordinates().getX();
-				coordinate_y = input.integersCoordinates().getY();
+				obtenerValors();
+				System.out.println(coordinate_x+ ", " + coordinate_y);
 				
-				while(coordinate_x ==-1 || coordinate_y == -1) {
+				while(!checkCoordinates(coordinate_x, coordinate_y)) {
 					System.out.println("Input the cell where you can place the Disk (row, column): ");
-					coordinate_x = input.integersCoordinates().getX();
-					coordinate_y = input.integersCoordinates().getY();
+					obtenerValors();
+					System.out.println(coordinate_x+ ", " + coordinate_y);
 				}
 				disk = othello.getGameBoard().placeDisk(coordinate_x-1, coordinate_y-1, color);
 			}
 			changeTurn();
-			totalWhites = othello.getTotalWhites();
-			totalBlacks = othello.getTotalBlacks();
+			totalWhites = othello.getGameBoard().getTotalWhites();
+			totalBlacks = othello.getGameBoard().getTotalBlacks();
 			System.out.println("Black disks: " + totalBlacks + " -  White disks: " + totalWhites);
 			System.out.println("");
 			System.out.println(othello.getGameBoard());
@@ -71,11 +65,37 @@ public class Othello{
 		}
 	}
 	
+	public Color BuscaColor(Player currentPlayer) {
+		if(currentPlayer.getColor().equals(Color.Black)==true)
+			return Color.Black;
+			else {
+				return Color.White;
+			}
+	}
+	
+	public Player BuscaJugador() {
+		return othello.getPlayer(playerTurn);
+	}
+	
+	public boolean checkCoordinates(int x, int y)
+	{
+		if(x ==-1 || y == -1)
+			return false;
+		else {
+			return true;
+		}
+	}
+	public void obtenerValors() {
+		Valors = input.integersCoordinates();
+		coordinate_x = Valors.x;
+		coordinate_y = Valors.y;
+	}
+	
 	public void setInput(KeyboardInput input) {
-		this.input = input;
+		Othello.input = input;
 	}
 
-	private void changeTurn() {
+	public void changeTurn() {
 		playerTurn += 1;
 		if (playerTurn > 1) { playerTurn = 0; }
 	}

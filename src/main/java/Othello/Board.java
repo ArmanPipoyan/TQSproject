@@ -2,7 +2,7 @@ package Othello;
 
 public class Board {
 
-	private Disk[][] gameBoard;
+	protected Disk[][] gameBoard;
 	private int totalWhites;
 	private int totalBlacks;
 	
@@ -18,7 +18,7 @@ public class Board {
 	}
 	
 	public Disk[][] getGameBoard(){
-		return gameBoard;
+		return this.gameBoard;
 	}
 	
 	public int getTotalWhites() {
@@ -257,7 +257,7 @@ public class Board {
 	}
 	
 	public boolean isFull() {
-		return totalWhites + totalBlacks == 64;
+		return ((this.totalWhites + this.totalBlacks) == 64);
 	}
 	
 	@Override
