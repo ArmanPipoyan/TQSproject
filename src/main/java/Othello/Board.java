@@ -140,9 +140,12 @@ public class Board {
 			}
 			
 			this.gameBoard[row][column].changeColor();
-			
 			return check+1;
 		}
+	
+	public boolean checkPlaceDisk(int row, int column, Color color) {
+		return false;
+	}
 	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;

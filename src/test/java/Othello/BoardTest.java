@@ -199,6 +199,42 @@ public class BoardTest {
 		assertEquals(-1, board.positionsToSameColor(5, 2, Color.Black, Direction.up_right_diagonal));
 	}
 	
-	
+	@Test
+	public void checkPlaceDiskTest(){
+		
+		////positions where we can place a white disk but we can't place a black disk
+		assertFalse(board.checkPlaceDisk(4, 2, Color.Black));
+		assertFalse(board.checkPlaceDisk(5, 3, Color.Black));
+		assertFalse(board.checkPlaceDisk(2, 4, Color.Black));
+		assertFalse(board.checkPlaceDisk(3, 5, Color.Black));
+		
+		//positions next to white disk but on lines it doesn't have another disk of the same color to meet the condition 
+		assertFalse(board.checkPlaceDisk(5, 2, Color.Black));
+		assertFalse(board.checkPlaceDisk(2, 5, Color.Black));
+		
+		//position where we can put a black disk
+		assertTrue(board.checkPlaceDisk(2, 3, Color.Black));
+		assertTrue(board.checkPlaceDisk(3, 2, Color.Black));
+		assertTrue(board.checkPlaceDisk(4, 5, Color.Black));
+		assertTrue(board.checkPlaceDisk(5, 4, Color.Black));
+		
+		//positions where we can place a black disk but we can't place a white disk
+		assertFalse(board.checkPlaceDisk(2, 3, Color.White));
+		assertFalse(board.checkPlaceDisk(3, 2, Color.White));
+	    assertFalse(board.checkPlaceDisk(4, 5, Color.White));
+	    assertFalse(board.checkPlaceDisk(5, 4, Color.White));
+				
+		//positions next to black disk but on lines it doesn't have another disk of the same color to meet the condition 
+		assertFalse(board.checkPlaceDisk(2, 2, Color.White));
+		assertFalse(board.checkPlaceDisk(5, 5, Color.White));
+		
+		//position where we can put a white disk
+		assertTrue(board.checkPlaceDisk(4, 2, Color.White));
+		assertTrue(board.checkPlaceDisk(5, 3, Color.White));
+		assertTrue(board.checkPlaceDisk(2, 4, Color.White));
+		assertTrue(board.checkPlaceDisk(3, 5, Color.White));
+		
+	}
+		
 }
 		
