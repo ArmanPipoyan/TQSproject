@@ -91,6 +91,11 @@ public class Board {
 		return nextTo;
 	}
 	
+	public int changeColor(int row, int column, Color color, Direction dir, 
+			boolean change){
+		return 0;
+	}
+	
 	public boolean isFull() {
 		return totalWhites + totalBlacks == 64;
 	}

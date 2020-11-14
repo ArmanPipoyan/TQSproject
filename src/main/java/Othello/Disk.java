@@ -11,7 +11,7 @@ public class Disk {
 		return color;
 	}
 	
-	public void changeColor() {
+	public void turn() {
 		if(color==Color.Black) {
 			color=Color.White;
 		}else {

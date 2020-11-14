@@ -163,5 +163,43 @@ public class BoardTest {
 	
 	}
 	
+	@Test
+	public void changeColorTest() {
+		assertEquals(-1, board.changeColor(2, 3, Color.White, Direction.down, false));
+		assertEquals(-1, board.changeColor(2, 3, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.changeColor(2, 3, Color.White, Direction.left, false));
+		assertEquals(-1, board.changeColor(2, 3, Color.White, Direction.right, false));
+		assertEquals(-1, board.changeColor(2, 3, Color.White, Direction.down_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(2, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.changeColor(2, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.changeColor(2, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.changeColor(2, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.changeColor(2, 2, Color.White, Direction.down_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(2, 5, Color.White, Direction.down, false));
+		assertEquals(-1, board.changeColor(2, 5, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.changeColor(2, 5, Color.White, Direction.left, false));
+		assertEquals(-1, board.changeColor(2, 5, Color.White, Direction.right, false));
+		assertEquals(-1, board.changeColor(2, 5, Color.White, Direction.down_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(2, 1, Color.White, Direction.down, false));
+		assertEquals(-1, board.changeColor(2, 1, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.changeColor(2, 1, Color.White, Direction.left, false));
+		assertEquals(-1, board.changeColor(2, 1, Color.White, Direction.right, false));
+		assertEquals(-1, board.changeColor(2, 1, Color.White, Direction.down_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(4, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.changeColor(4, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.changeColor(4, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.changeColor(4, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.changeColor(4, 2, Color.White, Direction.down_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(5, 2, Color.Black, Direction.up_right_diagonal, false));
+		
+		assertEquals(-1, board.changeColor(3, 2, Color.Black, Direction.up_left_diagonal, false));
+	}
+	
+	
 }
 		
