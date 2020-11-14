@@ -270,7 +270,6 @@ public class BoardTest {
 		assertNotEquals(Color.Black, auxBoard[3][3].getColor());
 		assertEquals(Color.White, auxBoard[2][2].getColor());
 		assertEquals(Color.White, auxBoard[3][3].getColor());
-	
 	}
 		
 }
