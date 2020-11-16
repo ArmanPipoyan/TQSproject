@@ -91,40 +91,14 @@ public class Board {
 		return nextTo;
 	}
 	
-	public int positionsToSameColor(int row, int column, Color color, Direction dir, boolean turn){
-
+	public int positionsToSameColor(int row, int column, Color color, Direction direction, boolean turn){
+		
 	int row1 = 0;
 	int col1 = 0;
-	
-			if(dir == Direction.up) {
-				row1 = -1;
-			}
-			else if(dir == Direction.down) {
-				row1 = 1;
-			}
-			else if(dir == Direction.left) {
-				col1 = -1;
-			}
-			else if(dir==Direction.right) {
-				col1 = 1;
-			}
-			else if(dir == Direction.up_left_diagonal) {
-				row1 = -1;
-				col1 = -1;
-			}
-			else if( dir == Direction.up_right_diagonal) {
-				row1 = -1;
-				col1 = +1;
-			}
-			else if(dir == Direction.down_left_diagonal) {
-				row1 = +1;
-				col1 = -1;
-			}
-			else {
-				row1 = +1;
-				col1 = +1;
-			}
-			
+	Coordinate coordinate = checkDirection(row1, col1, direction);
+	row1 = coordinate.x;
+	col1 = coordinate.y;
+				
 			if (outOfLimits(row, column) || gameBoard[row][column] == null) {
 				return -1;
 			}
@@ -133,7 +107,7 @@ public class Board {
 				return 0;
 			}
 			
-			int check = positionsToSameColor(row + row1, column + col1, color, dir, turn);
+			int check = positionsToSameColor(row + row1, column + col1, color, direction, turn);
 			if (check<0) {
 				return -1;
 			}
@@ -266,6 +240,48 @@ public class Board {
 			}
 		}
 		return sumCells;
+	}
+	
+	public Coordinate checkDirection(int row, int col, Direction direction) {
+ 
+		switch(direction) {
+
+	    case up:
+				row = -1;
+				break;
+		case down:
+				row = 1;
+				break;
+			
+		case left: 
+				col = -1;
+				break;
+			
+		case right:
+				col = 1;
+				break;
+			
+		case up_left_diagonal:
+				row = -1;
+				col = -1;
+				break;
+				
+		case up_right_diagonal:
+				row = -1;
+				col = +1;
+				break;
+			
+		case down_left_diagonal:
+				row = +1;
+				col = -1;
+				break;
+			
+		case down_right_diagonal:
+				row = +1;
+				col = +1;
+				break;
+		}
+		return new Coordinate(row, col);
 	}
 	
 	@Override

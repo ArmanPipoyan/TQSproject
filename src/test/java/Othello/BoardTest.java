@@ -306,8 +306,20 @@ public class BoardTest {
 		board.countCellstoDisk(mTimesFor);
 		
 		int[] maxTimesFor = {2, 0, 4, 3, 0, 5, 2, 3};
-		board.countCellstoDisk(maxTimesFor);
-		
+		board.countCellstoDisk(maxTimesFor);	
+	}
+	
+	@Test
+	public void checkDirectionTest() {
+		//Path Coverage
+		board.checkDirection(2, 4, Direction.up);
+		board.checkDirection(1, 3, Direction.down);
+		board.checkDirection(5, 6, Direction.left);
+		board.checkDirection(3, 2, Direction.right);
+		board.checkDirection(7, 1, Direction.down_left_diagonal);
+		board.checkDirection(6, 3, Direction.down_right_diagonal);
+		board.checkDirection(4, 4, Direction.up_left_diagonal);
+		board.checkDirection(6, 7, Direction.up_right_diagonal);
 		
 	}
 		
