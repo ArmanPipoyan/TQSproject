@@ -55,11 +55,15 @@ public class Board {
 		totalWhites = countWhites;
 	}
 	
-	public boolean outOfLimits(int row, int column) {
+	private boolean outOfLimits(int row, int column) {
 		return !((0 <= row && 0 <= column) && (row < gameBoard.length && column < gameBoard.length));
 	}
 	
-	public boolean nextToDisk(int row, int column) {
+	public boolean proxyoutOfLimits(int row, int column) {
+		return outOfLimits(row, column);
+	}
+	
+	private boolean nextToDisk(int row, int column) {
 		boolean nextTo = false;
 	
 		if (outOfLimits(row, column) == false ) {
@@ -91,7 +95,11 @@ public class Board {
 		return nextTo;
 	}
 	
-	public int positionsToSameColor(int row, int column, Color color, Direction direction, boolean turn){
+	public boolean proxynextToDisk(int row, int column) {
+		return nextToDisk(row, column);
+	}
+	
+	private int positionsToSameColor(int row, int column, Color color, Direction direction, boolean turn){
 		
 	int row1 = 0;
 	int col1 = 0;
@@ -117,9 +125,13 @@ public class Board {
 			return check+1;
 		}
 	
-	public boolean checkPlaceDisk(int row, int column, Color color, boolean turn) {
+	public int proxypositionsToSameColor(int row, int column, Color color, Direction direction, boolean turn) {
+		return positionsToSameColor(row, column, color, direction, turn);
+	}
+	
+	private boolean checkPlaceDisk(int row, int column, Color color, boolean turn) {
 		boolean canPlace = false;
-			boolean nextToDisk = nextToDisk(row, column);
+		boolean nextToDisk = nextToDisk(row, column);
 			
 			if(nextToDisk == true){
 				//Up
@@ -207,6 +219,10 @@ public class Board {
 	
 	}
 	
+	public boolean proxycheckPlaceDisk(int row, int column, Color color, boolean turn) {
+		return checkPlaceDisk(row, column, color, turn);
+	}
+	
 	public boolean placeDisk(int row, int column, Color color) {
 		boolean turn = true;
 		boolean diskPlaced = false;
@@ -245,41 +261,40 @@ public class Board {
 	public Coordinate checkDirection(int row, int col, Direction direction) {
  
 		switch(direction) {
-
-	    case up:
-				row = -1;
-				break;
-		case down:
-				row = 1;
-				break;
-			
-		case left: 
-				col = -1;
-				break;
-			
-		case right:
-				col = 1;
-				break;
-			
-		case up_left_diagonal:
-				row = -1;
-				col = -1;
-				break;
+			case up:
+					row = -1;
+					break;
+			case down:
+					row = 1;
+					break;
 				
-		case up_right_diagonal:
-				row = -1;
-				col = +1;
-				break;
-			
-		case down_left_diagonal:
-				row = +1;
-				col = -1;
-				break;
-			
-		case down_right_diagonal:
-				row = +1;
-				col = +1;
-				break;
+			case left: 
+					col = -1;
+					break;
+				
+			case right:
+					col = 1;
+					break;
+				
+			case up_left_diagonal:
+					row = -1;
+					col = -1;
+					break;
+					
+			case up_right_diagonal:
+					row = -1;
+					col = +1;
+					break;
+				
+			case down_left_diagonal:
+					row = +1;
+					col = -1;
+					break;
+				
+			case down_right_diagonal:
+					row = +1;
+					col = +1;
+					break;
 		}
 		return new Coordinate(row, col);
 	}

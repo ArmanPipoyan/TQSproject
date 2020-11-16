@@ -3,7 +3,7 @@ package Othello;
 public class Disk {
 	private Color color;
 	
-	Disk(Color color){
+	public Disk(Color color){
 		this.color=color;
 	}
 	

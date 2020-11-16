@@ -92,8 +92,8 @@ public class Othello{
 	}
 	public void getCoordinates() {
 		Coordinate cordinate = input.integersCoordinates();
-		coordinate_x = cordinate.x;
-		coordinate_y = cordinate.y;
+		coordinate_x = cordinate.getX();
+		coordinate_y = cordinate.getY();
 	}
 	
 	public void setInput(KeyboardInput input) {

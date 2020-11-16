@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import Othello.Board;
+import Othello.Color;
+import Othello.Direction;
+import Othello.Disk;
+
 public class BoardTest {
 	Board board;
 	Disk[][] auxBoard;
@@ -72,52 +77,52 @@ public class BoardTest {
 	public void outOfLimitsTest() {
 		//Black box test
 		//position out of board next to corners
-		assertTrue(board.outOfLimits(0, -1));
-		assertTrue(board.outOfLimits(-1, -1));
-		assertTrue(board.outOfLimits(-1, 7));
-		assertTrue(board.outOfLimits(0, 8));
-		assertTrue(board.outOfLimits(-1, 8));
-		assertTrue(board.outOfLimits(8, 0));
-		assertTrue(board.outOfLimits(7, -1));
-		assertTrue(board.outOfLimits(8, -1));
-		assertTrue(board.outOfLimits(7, 8));
-		assertTrue(board.outOfLimits(8, 7));
-		assertTrue(board.outOfLimits(8, 8));	
+		assertTrue(board.proxyoutOfLimits(0, -1));
+		assertTrue(board.proxyoutOfLimits(-1, -1));
+		assertTrue(board.proxyoutOfLimits(-1, 7));
+		assertTrue(board.proxyoutOfLimits(0, 8));
+		assertTrue(board.proxyoutOfLimits(-1, 8));
+		assertTrue(board.proxyoutOfLimits(8, 0));
+		assertTrue(board.proxyoutOfLimits(7, -1));
+		assertTrue(board.proxyoutOfLimits(8, -1));
+		assertTrue(board.proxyoutOfLimits(7, 8));
+		assertTrue(board.proxyoutOfLimits(8, 7));
+		assertTrue(board.proxyoutOfLimits(8, 8));	
 		
 		//position in corners
-		assertFalse(board.outOfLimits(0, 0));
-		assertFalse(board.outOfLimits(0, 7));
-		assertFalse(board.outOfLimits(7, 0));
-		assertFalse(board.outOfLimits(7, 7));
+		assertFalse(board.proxyoutOfLimits(0, 0));
+		assertFalse(board.proxyoutOfLimits(0, 7));
+		assertFalse(board.proxyoutOfLimits(7, 0));
+		assertFalse(board.proxyoutOfLimits(7, 7));
 		
 		//position out of board next to laterals
-		assertTrue(board.outOfLimits(-3, 0));
-		assertTrue(board.outOfLimits(0, -3));
-		assertTrue(board.outOfLimits(12, 0));
-		assertTrue(board.outOfLimits(0, 9));
-		assertTrue(board.outOfLimits(7, -3));
-		assertTrue(board.outOfLimits(-3, 7));
-		assertTrue(board.outOfLimits(7, 11));
-		assertTrue(board.outOfLimits(9, 7));
+		assertTrue(board.proxyoutOfLimits(-3, 0));
+		assertTrue(board.proxyoutOfLimits(0, -3));
+		assertTrue(board.proxyoutOfLimits(12, 0));
+		assertTrue(board.proxyoutOfLimits(0, 9));
+		assertTrue(board.proxyoutOfLimits(7, -3));
+		assertTrue(board.proxyoutOfLimits(-3, 7));
+		assertTrue(board.proxyoutOfLimits(7, 11));
+		assertTrue(board.proxyoutOfLimits(9, 7));
 		
 		//position in laterals
-		assertFalse(board.outOfLimits(0, 3));
-		assertFalse(board.outOfLimits(3, 0));
-		assertFalse(board.outOfLimits(7, 3));
-		assertFalse(board.outOfLimits(3, 7));
+		assertFalse(board.proxyoutOfLimits(0, 3));
+		assertFalse(board.proxyoutOfLimits(3, 0));
+		assertFalse(board.proxyoutOfLimits(7, 3));
+		assertFalse(board.proxyoutOfLimits(3, 7));
 		
 		//position out of board with row or column in central cells
-		assertTrue(board.outOfLimits(10, -3));
-		assertTrue(board.outOfLimits(-5, 7));
-		assertTrue(board.outOfLimits(-0, 11));
-		assertTrue(board.outOfLimits(-4, 9));
-		assertTrue(board.outOfLimits(7, -3));
-		assertTrue(board.outOfLimits(10, -3));
-		assertTrue(board.outOfLimits(9, 7));
+		assertTrue(board.proxyoutOfLimits(10, -3));
+		assertTrue(board.proxyoutOfLimits(-5, 7));
+		assertTrue(board.proxyoutOfLimits(-0, 11));
+		assertTrue(board.proxyoutOfLimits(-4, 9));
+		assertTrue(board.proxyoutOfLimits(7, -3));
+		assertTrue(board.proxyoutOfLimits(10, -3));
+		assertTrue(board.proxyoutOfLimits(9, 7));
 		
 		//position with all coordinates out of board
-		assertTrue(board.outOfLimits(-2, -4));
-		assertTrue(board.outOfLimits(9, 10));
+		assertTrue(board.proxyoutOfLimits(-2, -4));
+		assertTrue(board.proxyoutOfLimits(9, 10));
 		
 		
 	}
@@ -127,53 +132,53 @@ public class BoardTest {
 		//Only let the disk be placed if there is an opponent next to it
 				
 				//positions where you should let black disks
-				assertTrue(board.nextToDisk(2, 3));
-				assertTrue(board.nextToDisk(3, 2));
-				assertTrue(board.nextToDisk(4, 5));
-				assertTrue(board.nextToDisk(5, 4));
+				assertTrue(board.proxynextToDisk(2, 3));
+				assertTrue(board.proxynextToDisk(3, 2));
+				assertTrue(board.proxynextToDisk(4, 5));
+				assertTrue(board.proxynextToDisk(5, 4));
 				
 				//corners can also be placed
-				assertTrue(board.nextToDisk(2, 2));
-				assertTrue(board.nextToDisk(5, 5));
+				assertTrue(board.proxynextToDisk(2, 2));
+				assertTrue(board.proxynextToDisk(5, 5));
 				
-				//limit positions
-				assertFalse(board.nextToDisk(0, 0));
-				assertFalse(board.nextToDisk(0, 1));
-				assertFalse(board.nextToDisk(0, 2));
-				assertFalse(board.nextToDisk(0, 3));
-				assertFalse(board.nextToDisk(0, 4));
-				assertFalse(board.nextToDisk(0, 5));
-				assertFalse(board.nextToDisk(0, 6));
-				assertFalse(board.nextToDisk(0, 7));
-				
-				//
-				assertFalse(board.nextToDisk(1, 0));
-				assertFalse(board.nextToDisk(2, 0));
-				assertFalse(board.nextToDisk(3, 0));
-				assertFalse(board.nextToDisk(4, 0));
-				assertFalse(board.nextToDisk(5, 0));
-				assertFalse(board.nextToDisk(6, 0));
-				assertFalse(board.nextToDisk(7, 0));
+				//frontier positions
+				assertFalse(board.proxynextToDisk(0, 0));
+				assertFalse(board.proxynextToDisk(0, 1));
+				assertFalse(board.proxynextToDisk(0, 2));
+				assertFalse(board.proxynextToDisk(0, 3));
+				assertFalse(board.proxynextToDisk(0, 4));
+				assertFalse(board.proxynextToDisk(0, 5));
+				assertFalse(board.proxynextToDisk(0, 6));
+				assertFalse(board.proxynextToDisk(0, 7));
 				
 				//
-				assertFalse(board.nextToDisk(0, 7));
-				assertFalse(board.nextToDisk(1, 7));
-				assertFalse(board.nextToDisk(2, 7));
-				assertFalse(board.nextToDisk(3, 7));
-				assertFalse(board.nextToDisk(4, 7));
-				assertFalse(board.nextToDisk(5, 7));
-				assertFalse(board.nextToDisk(6, 7));
-				assertFalse(board.nextToDisk(7, 7));
+				assertFalse(board.proxynextToDisk(1, 0));
+				assertFalse(board.proxynextToDisk(2, 0));
+				assertFalse(board.proxynextToDisk(3, 0));
+				assertFalse(board.proxynextToDisk(4, 0));
+				assertFalse(board.proxynextToDisk(5, 0));
+				assertFalse(board.proxynextToDisk(6, 0));
+				assertFalse(board.proxynextToDisk(7, 0));
 				
 				//
-				assertFalse(board.nextToDisk(7, 0));
-				assertFalse(board.nextToDisk(7, 1));
-				assertFalse(board.nextToDisk(7, 2));
-				assertFalse(board.nextToDisk(7, 3));
-				assertFalse(board.nextToDisk(7, 4));
-				assertFalse(board.nextToDisk(7, 5));
-				assertFalse(board.nextToDisk(7, 6));
-				assertFalse(board.nextToDisk(7, 7));
+				assertFalse(board.proxynextToDisk(0, 7));
+				assertFalse(board.proxynextToDisk(1, 7));
+				assertFalse(board.proxynextToDisk(2, 7));
+				assertFalse(board.proxynextToDisk(3, 7));
+				assertFalse(board.proxynextToDisk(4, 7));
+				assertFalse(board.proxynextToDisk(5, 7));
+				assertFalse(board.proxynextToDisk(6, 7));
+				assertFalse(board.proxynextToDisk(7, 7));
+				
+				//
+				assertFalse(board.proxynextToDisk(7, 0));
+				assertFalse(board.proxynextToDisk(7, 1));
+				assertFalse(board.proxynextToDisk(7, 2));
+				assertFalse(board.proxynextToDisk(7, 3));
+				assertFalse(board.proxynextToDisk(7, 4));
+				assertFalse(board.proxynextToDisk(7, 5));
+				assertFalse(board.proxynextToDisk(7, 6));
+				assertFalse(board.proxynextToDisk(7, 7));
 
 	
 	}
@@ -181,76 +186,76 @@ public class BoardTest {
 	@Test
 	public void positionsToSameColorTest() {
 		
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down, false));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_left_diagonal, false));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.left, false));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.right, false));
-		assertEquals(-1, board.positionsToSameColor(2, 3, Color.White, Direction.down_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 3, Color.White, Direction.down, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 3, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 3, Color.White, Direction.left, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 3, Color.White, Direction.right, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 3, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down, false));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_left_diagonal, false));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.left, false));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.right, false));
-		assertEquals(-1, board.positionsToSameColor(2, 2, Color.White, Direction.down_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 2, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down, false));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_left_diagonal, false));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.left, false));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.right, false));
-		assertEquals(-1, board.positionsToSameColor(2, 5, Color.White, Direction.down_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 5, Color.White, Direction.down, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 5, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 5, Color.White, Direction.left, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 5, Color.White, Direction.right, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 5, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down, false));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_left_diagonal, false));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.left, false));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.right, false));
-		assertEquals(-1, board.positionsToSameColor(2, 1, Color.White, Direction.down_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 1, Color.White, Direction.down, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 1, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 1, Color.White, Direction.left, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 1, Color.White, Direction.right, false));
+		assertEquals(-1, board.proxypositionsToSameColor(2, 1, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down, false));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_left_diagonal, false));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.left, false));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.right, false));
-		assertEquals(-1, board.positionsToSameColor(4, 2, Color.White, Direction.down_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(4, 2, Color.White, Direction.down, false));
+		assertEquals(-1, board.proxypositionsToSameColor(4, 2, Color.White, Direction.down_left_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(4, 2, Color.White, Direction.left, false));
+		assertEquals(-1, board.proxypositionsToSameColor(4, 2, Color.White, Direction.right, false));
+		assertEquals(-1, board.proxypositionsToSameColor(4, 2, Color.White, Direction.down_right_diagonal, false));
 		
-		assertEquals(-1, board.positionsToSameColor(5, 2, Color.Black, Direction.up_right_diagonal, false));
+		assertEquals(-1, board.proxypositionsToSameColor(5, 2, Color.Black, Direction.up_right_diagonal, false));
 	}
 	
 	@Test
 	public void checkPlaceDiskTest(){
 		
 		////positions where we can place a white disk but we can't place a black disk
-		assertFalse(board.checkPlaceDisk(4, 2, Color.Black, true));
-		assertFalse(board.checkPlaceDisk(4, 2, Color.Black, false));
-		assertFalse(board.checkPlaceDisk(5, 3, Color.Black, false));
-		assertFalse(board.checkPlaceDisk(2, 4, Color.Black, false));
-		assertFalse(board.checkPlaceDisk(3, 5, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(4, 2, Color.Black, true));
+		assertFalse(board.proxycheckPlaceDisk(4, 2, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(5, 3, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(2, 4, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(3, 5, Color.Black, false));
 		
 		//positions next to white disk but on lines it doesn't have another disk of the same color to meet the condition 
-		assertFalse(board.checkPlaceDisk(5, 2, Color.Black, false));
-		assertFalse(board.checkPlaceDisk(2, 5, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(5, 2, Color.Black, false));
+		assertFalse(board.proxycheckPlaceDisk(2, 5, Color.Black, false));
 		
 		//position where we can put a black disk
-		assertTrue(board.checkPlaceDisk(2, 3, Color.Black, false));
-		assertTrue(board.checkPlaceDisk(3, 2, Color.Black, false));
-		assertTrue(board.checkPlaceDisk(4, 5, Color.Black, false));
-		assertTrue(board.checkPlaceDisk(5, 4, Color.Black, false));
+		assertTrue(board.proxycheckPlaceDisk(2, 3, Color.Black, false));
+		assertTrue(board.proxycheckPlaceDisk(3, 2, Color.Black, false));
+		assertTrue(board.proxycheckPlaceDisk(4, 5, Color.Black, false));
+		assertTrue(board.proxycheckPlaceDisk(5, 4, Color.Black, false));
 		
 		//positions where we can place a black disk but we can't place a white disk
-		assertFalse(board.checkPlaceDisk(2, 3, Color.White, true));
-		assertFalse(board.checkPlaceDisk(2, 3, Color.White, false));
-		assertFalse(board.checkPlaceDisk(3, 2, Color.White, false));
-	    assertFalse(board.checkPlaceDisk(4, 5, Color.White, false));
-	    assertFalse(board.checkPlaceDisk(5, 4, Color.White, false));
+		assertFalse(board.proxycheckPlaceDisk(2, 3, Color.White, true));
+		assertFalse(board.proxycheckPlaceDisk(2, 3, Color.White, false));
+		assertFalse(board.proxycheckPlaceDisk(3, 2, Color.White, false));
+	    assertFalse(board.proxycheckPlaceDisk(4, 5, Color.White, false));
+	    assertFalse(board.proxycheckPlaceDisk(5, 4, Color.White, false));
 				
 		//positions next to black disk but on lines it doesn't have another disk of the same color to meet the condition 
-		assertFalse(board.checkPlaceDisk(2, 2, Color.White, false));
-		assertFalse(board.checkPlaceDisk(5, 5, Color.White, false));
+		assertFalse(board.proxycheckPlaceDisk(2, 2, Color.White, false));
+		assertFalse(board.proxycheckPlaceDisk(5, 5, Color.White, false));
 		
 		//position where we can put a white disk
-		assertTrue(board.checkPlaceDisk(4, 2, Color.White, false));
-		assertTrue(board.checkPlaceDisk(5, 3, Color.White, false));
-		assertTrue(board.checkPlaceDisk(2, 4, Color.White, false));
-		assertTrue(board.checkPlaceDisk(3, 5, Color.White, false));
-		assertTrue(board.checkPlaceDisk(3, 5, Color.White, true));
+		assertTrue(board.proxycheckPlaceDisk(4, 2, Color.White, false));
+		assertTrue(board.proxycheckPlaceDisk(5, 3, Color.White, false));
+		assertTrue(board.proxycheckPlaceDisk(2, 4, Color.White, false));
+		assertTrue(board.proxycheckPlaceDisk(3, 5, Color.White, false));
+		assertTrue(board.proxycheckPlaceDisk(3, 5, Color.White, true));
 		
 	}
 	
@@ -283,13 +288,13 @@ public class BoardTest {
 		
 		//Decision and Condition Coverage
 		
-	    assertTrue(board.outOfLimits(-2, -2)); //!((0 <= -2 && 0 <= -2) && (-2 < 8 && -2 < 8)) -> !(false and true) -> true
-	    assertTrue(board.outOfLimits(3, -2)); //!((0 <= 3 && 0 <= -2) && (3 < 8 && -2 < 8)) -> !(false and true) -> true
-	    assertTrue(board.outOfLimits(-2, 4)); //!((0 <= -2 && 0 <= 4) && (-2 < 8 && 4 < 8)) -> !(false and true) ->true
-	    assertFalse(board.outOfLimits(1, 1)); //!((0 <= 1 && 0 <= 1) && (1 < 8 && 1 < 8)) -> !(true and true) -> false
-	    assertTrue(board.outOfLimits(8, 8)); //!((0 <=  8 && 0 <= 8) && (8 < 8 && 8 < 8))-> !(true and false) -> true
-	    assertTrue(board.outOfLimits(6, 9)); //!((0 <= 6 && 0 <= 9) && (6 < 8 && 9 < 8)) -> !(true and false) -> true
-	    assertTrue(board.outOfLimits(8, 7)); //!((0 <= 8 && 0 <= 7) && (8 < 8 && 7 < 8)) -> !(true and false) -> true
+	    assertTrue(board.proxyoutOfLimits(-2, -2)); //!((0 <= -2 && 0 <= -2) && (-2 < 8 && -2 < 8)) -> !(false and true) -> true
+	    assertTrue(board.proxyoutOfLimits(3, -2)); //!((0 <= 3 && 0 <= -2) && (3 < 8 && -2 < 8)) -> !(false and true) -> true
+	    assertTrue(board.proxyoutOfLimits(-2, 4)); //!((0 <= -2 && 0 <= 4) && (-2 < 8 && 4 < 8)) -> !(false and true) ->true
+	    assertFalse(board.proxyoutOfLimits(1, 1)); //!((0 <= 1 && 0 <= 1) && (1 < 8 && 1 < 8)) -> !(true and true) -> false
+	    assertTrue(board.proxyoutOfLimits(8, 8)); //!((0 <=  8 && 0 <= 8) && (8 < 8 && 8 < 8))-> !(true and false) -> true
+	    assertTrue(board.proxyoutOfLimits(6, 9)); //!((0 <= 6 && 0 <= 9) && (6 < 8 && 9 < 8)) -> !(true and false) -> true
+	    assertTrue(board.proxyoutOfLimits(8, 7)); //!((0 <= 8 && 0 <= 7) && (8 < 8 && 7 < 8)) -> !(true and false) -> true
 	      
 	}
 	
