@@ -289,11 +289,27 @@ public class BoardTest {
 	    assertTrue(board.outOfLimits(8, 8)); //!((0 <=  8 && 0 <= 8) && (8 < 8 && 8 < 8))-> !(true and false) -> true
 	    assertTrue(board.outOfLimits(6, 9)); //!((0 <= 6 && 0 <= 9) && (6 < 8 && 9 < 8)) -> !(true and false) -> true
 	    assertTrue(board.outOfLimits(8, 7)); //!((0 <= 8 && 0 <= 7) && (8 < 8 && 7 < 8)) -> !(true and false) -> true
-	    
-	    
-	    
+	      
 	}
 	
+	@Test
+	public void countCellstoDiskTest() {
+		//Loop Testing: simple loop
+		
+		int[] skipFor = new int[0];
+		board.countCellstoDisk(skipFor);
+		
+		int[] onceFor = {2};
+		board.countCellstoDisk(onceFor);
+		
+		int[] mTimesFor = {2, 0, 4, 3, 0, 5, 2};
+		board.countCellstoDisk(mTimesFor);
+		
+		int[] maxTimesFor = {2, 0, 4, 3, 0, 5, 2, 3};
+		board.countCellstoDisk(maxTimesFor);
+		
+		
+	}
 		
 }
 		

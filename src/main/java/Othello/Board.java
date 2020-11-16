@@ -219,13 +219,8 @@ public class Board {
 				cells[6] = positionsToSameColor(row+1, column-1, color, Direction.down_left_diagonal, turn);
 				cells[7] = positionsToSameColor(row+1, column+1, color, Direction.down_right_diagonal, turn);
 				
-				int check = 0;
-				for (int cell : cells) {
-					if (cell >0) {
-						
-						check =+ cell;
-					}
-				}
+				int check = countCellstoDisk(cells);
+				
 				if (check <= 0) {
 					canPlace = false;
 				}
@@ -260,6 +255,17 @@ public class Board {
 	
 	public boolean isFull() {
 		return ((this.totalWhites + this.totalBlacks) == 64);
+	}
+	
+	public int countCellstoDisk(int[] cells) {
+		int sumCells= 0;
+		for (int cell : cells) {
+			if (cell >0) {
+				
+				sumCells =+ cell;
+			}
+		}
+		return sumCells;
 	}
 	
 	@Override
