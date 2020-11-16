@@ -36,6 +36,7 @@ public class BoardTest {
 	@Test
 	public void isFullTest() {
 		//Condition Coverage, Decision Coverage
+		
 		board.setTotalWhites(25);
 		board.setTotalBlacks(32);
 		boolean res_25W_32B = board.isFull();
