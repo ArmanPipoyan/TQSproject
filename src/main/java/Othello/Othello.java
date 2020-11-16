@@ -12,6 +12,7 @@ public class Othello{
 	
 	public void play() {
 		System.out.println("------------Othello------------");
+		othello.getGameBoard().updateScore();
 		int totalWhites = othello.getGameBoard().getTotalWhites();
 		int totalBlacks = othello.getGameBoard().getTotalBlacks();
 		System.out.println("Black disks: "+totalBlacks+" White disks: "+totalWhites);
@@ -83,7 +84,7 @@ public class Othello{
 	
 	public boolean checkCoordinates(int x, int y)
 	{
-		if(x ==-1 || y == -1)
+		if(x ==-1 && y == -1)
 			return false;
 		else {
 			return true;
@@ -97,6 +98,10 @@ public class Othello{
 	
 	public void setInput(KeyboardInput input) {
 		this.input = input;
+	}
+	
+	public void setBoard(Board board) {
+		othello.setGameBoard(board);
 	}
 
 	public void changeTurn() {

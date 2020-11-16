@@ -6,6 +6,7 @@ import org.junit.Test;
 public class KeyboardInputMockTest {
 
 	@Test
+	//Uses keyboard input mock and helps to do Statement Coverage
 	public void integersCoordinatesTest() {	
 		Othello othelloWinBlacks = new Othello();
 		KeyboardInput input1 = new KeyboardInputMock(1);

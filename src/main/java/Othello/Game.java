@@ -19,5 +19,8 @@ public class Game {
 		return board;
 	}
 	
+	public void setGameBoard(Board board) {
+		this.board = board;
+	}
 
 }

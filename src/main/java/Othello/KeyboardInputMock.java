@@ -163,15 +163,7 @@ public class KeyboardInputMock extends KeyboardInput {
 			coordinates.add(new Coordinate(7, 7));
 			
 		}
-		 else {
-			 
-			
-			
-			
-		
-			
-			
-		}
+		 
 	}
 		
 		protected Coordinate integersCoordinates() {

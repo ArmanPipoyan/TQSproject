@@ -95,35 +95,34 @@ public class Board {
 
 	int row1 = 0;
 	int col1 = 0;
-			switch(dir) {
-			case up:
+	
+			if(dir == Direction.up) {
 				row1 = -1;
-				break;
-			case down:
+			}
+			else if(dir == Direction.down) {
 				row1 = 1;
-				break;
-			case left:
+			}
+			else if(dir == Direction.left) {
 				col1 = -1;
-				break;
-			case right:
+			}
+			else if(dir==Direction.right) {
 				col1 = 1;
-				break;
-			case up_left_diagonal:
+			}
+			else if(dir == Direction.up_left_diagonal) {
 				row1 = -1;
 				col1 = -1;
-				break;
-			case up_right_diagonal:
+			}
+			else if( dir == Direction.up_right_diagonal) {
 				row1 = -1;
 				col1 = +1;
-				break;
-			case down_left_diagonal:
+			}
+			else if(dir == Direction.down_left_diagonal) {
 				row1 = +1;
 				col1 = -1;
-				break;
-			case down_right_diagonal:
+			}
+			else {
 				row1 = +1;
 				col1 = +1;
-				break;
 			}
 			
 			if (outOfLimits(row, column) || gameBoard[row][column] == null) {
@@ -242,7 +241,6 @@ public class Board {
 	public boolean placeDisk(int row, int column, Color color) {
 		boolean turn = true;
 		boolean diskPlaced = false;
-		boolean firstTime = false;
 		
 		if (checkPlaceDisk(row, column, color, !turn) == true){
 			if(gameBoard[row][column] == null) {

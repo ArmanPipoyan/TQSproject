@@ -35,6 +35,7 @@ public class BoardTest {
 	
 	@Test
 	public void isFullTest() {
+		//Condition Coverage, Decision Coverage
 		board.setTotalWhites(25);
 		board.setTotalBlacks(32);
 		boolean res_25W_32B = board.isFull();
@@ -216,6 +217,7 @@ public class BoardTest {
 	public void checkPlaceDiskTest(){
 		
 		////positions where we can place a white disk but we can't place a black disk
+		assertFalse(board.checkPlaceDisk(4, 2, Color.Black, true));
 		assertFalse(board.checkPlaceDisk(4, 2, Color.Black, false));
 		assertFalse(board.checkPlaceDisk(5, 3, Color.Black, false));
 		assertFalse(board.checkPlaceDisk(2, 4, Color.Black, false));
@@ -232,6 +234,7 @@ public class BoardTest {
 		assertTrue(board.checkPlaceDisk(5, 4, Color.Black, false));
 		
 		//positions where we can place a black disk but we can't place a white disk
+		assertFalse(board.checkPlaceDisk(2, 3, Color.White, true));
 		assertFalse(board.checkPlaceDisk(2, 3, Color.White, false));
 		assertFalse(board.checkPlaceDisk(3, 2, Color.White, false));
 	    assertFalse(board.checkPlaceDisk(4, 5, Color.White, false));
@@ -246,6 +249,7 @@ public class BoardTest {
 		assertTrue(board.checkPlaceDisk(5, 3, Color.White, false));
 		assertTrue(board.checkPlaceDisk(2, 4, Color.White, false));
 		assertTrue(board.checkPlaceDisk(3, 5, Color.White, false));
+		assertTrue(board.checkPlaceDisk(3, 5, Color.White, true));
 		
 	}
 	
@@ -272,6 +276,24 @@ public class BoardTest {
 		assertEquals(Color.White, auxBoard[2][2].getColor());
 		assertEquals(Color.White, auxBoard[3][3].getColor());
 	}
+	
+	@Test
+	public void outOfLimits_white_box_test() {
+		
+		//Decision and Condition Coverage
+		
+	    assertTrue(board.outOfLimits(-2, -2)); //!((0 <= -2 && 0 <= -2) && (-2 < 8 && -2 < 8)) -> !(false and true) -> true
+	    assertTrue(board.outOfLimits(3, -2)); //!((0 <= 3 && 0 <= -2) && (3 < 8 && -2 < 8)) -> !(false and true) -> true
+	    assertTrue(board.outOfLimits(-2, 4)); //!((0 <= -2 && 0 <= 4) && (-2 < 8 && 4 < 8)) -> !(false and true) ->true
+	    assertFalse(board.outOfLimits(1, 1)); //!((0 <= 1 && 0 <= 1) && (1 < 8 && 1 < 8)) -> !(true and true) -> false
+	    assertTrue(board.outOfLimits(8, 8)); //!((0 <=  8 && 0 <= 8) && (8 < 8 && 8 < 8))-> !(true and false) -> true
+	    assertTrue(board.outOfLimits(6, 9)); //!((0 <= 6 && 0 <= 9) && (6 < 8 && 9 < 8)) -> !(true and false) -> true
+	    assertTrue(board.outOfLimits(8, 7)); //!((0 <= 8 && 0 <= 7) && (8 < 8 && 7 < 8)) -> !(true and false) -> true
+	    
+	    
+	    
+	}
+	
 		
 }
 		

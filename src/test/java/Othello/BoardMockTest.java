@@ -1,19 +1,15 @@
 package Othello;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-class BoardMockTest {
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
+public class BoardMockTest {
+	
 	@Test
-	void test() {
-		
+	public void drawBoardMockTest() {
+		Board drawBoardMock=new BoardMock();
+		Othello othelloDraw = new Othello();
+		othelloDraw.setBoard(drawBoardMock);
+		othelloDraw.play(); 
 	}
 
 }
