@@ -148,7 +148,7 @@ public class Board {
 		boolean canPlace = false;
 			boolean nextToDisk = nextToDisk(row, column);
 			
-			if(nextToDisk == true) {
+			if(nextToDisk == true){
 				//Up
 				if(!outOfLimits(row-1, column)==true
 						&& gameBoard[row-1][column] != null){
@@ -242,10 +242,14 @@ public class Board {
 	public boolean placeDisk(int row, int column, Color color) {
 		boolean turn = true;
 		boolean diskPlaced = false;
+		boolean firstTime = false;
 		
 		if (checkPlaceDisk(row, column, color, !turn) == true){
-			gameBoard[row][column] = new Disk(color);
-			diskPlaced = checkPlaceDisk(row, column, color, turn);
+			if(gameBoard[row][column] == null) {
+				gameBoard[row][column] = new Disk(color);
+				diskPlaced = checkPlaceDisk(row, column, color, turn);
+			}
+			
 			updateScore();
 			return diskPlaced;
 			
@@ -262,7 +266,7 @@ public class Board {
 	
 	@Override
 	public String toString() {
-		String board = "   A  B  C  D  E  F  G  H\n";
+		String board = "   1  2  3  4  5  6  7  8\n";
 		for (int i = 0; i < gameBoard.length; i++) {
 			board += ""+(i+1);
 			for (int j = 0; j < gameBoard.length; j++) {

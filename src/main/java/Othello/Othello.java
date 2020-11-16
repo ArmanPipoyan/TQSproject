@@ -2,12 +2,12 @@ package Othello;
 
 public class Othello{
 	
-	private static Game othello = new Game(); 
-	static int playerTurn = 0;
-	private static int coordinate_x;
-	private static int coordinate_y;
-	static KeyboardInput input = new KeyboardInput();
-	private static Coordinate Valors = new Coordinate(coordinate_x, coordinate_y);
+	private Game othello = new Game(); 
+	private int playerTurn = 0;
+	private int coordinate_x;
+	private int coordinate_y;
+	private KeyboardInput input = new KeyboardInput();
+	
 
 	
 	public void play() {
@@ -20,18 +20,18 @@ public class Othello{
 		Color color;
 		Player currentPlayer;
 		while (othello.getGameBoard().isFull() == false) {
-			currentPlayer =  BuscaJugador();
-			color = BuscaColor(currentPlayer);
+			currentPlayer =  getCurrentPayer();
+			color = getColor(currentPlayer);
 			
 			System.out.println("Turn of Player: " + (playerTurn+1) + " ("+color+")");
 			System.out.println("Input the cell where you can place the Disk (row, column): ");
 			
-			obtenerValors();
+			getCoordinates();
 			System.out.println(coordinate_x+ ", " + coordinate_y);
 			
 			while(!checkCoordinates(coordinate_x, coordinate_y)) {
 				System.out.println("Input the cell where you can place the Disk (row, column): ");
-				obtenerValors();
+				getCoordinates();
 				System.out.println(coordinate_x+ ", " + coordinate_y);
 			}
 			
@@ -40,12 +40,12 @@ public class Othello{
 			while(disk == false) {
 				System.out.println("You can't place the disk here!");
 				System.out.println("Input the cell where you can place the Disk (row, column): ");
-				obtenerValors();
+				getCoordinates();
 				System.out.println(coordinate_x+ ", " + coordinate_y);
 				
 				while(!checkCoordinates(coordinate_x, coordinate_y)) {
 					System.out.println("Input the cell where you can place the Disk (row, column): ");
-					obtenerValors();
+					getCoordinates();
 					System.out.println(coordinate_x+ ", " + coordinate_y);
 				}
 				disk = othello.getGameBoard().placeDisk(coordinate_x-1, coordinate_y-1, color);
@@ -58,14 +58,18 @@ public class Othello{
 			System.out.println(othello.getGameBoard());
 		}
 		
-		if (totalWhites < totalBlacks) {System.out.println("BLACKS WIN!");}
-		else if (totalBlacks < totalWhites) { System.out.println("WHITES WIN!");}
+		if (totalWhites < totalBlacks) {
+			System.out.println("BLACKS WIN!");
+		}
+		else if (totalBlacks < totalWhites) { 
+			System.out.println("WHITES WIN!");
+			}
 		else {
 			System.out.println("DRAW");
 		}
 	}
 	
-	public Color BuscaColor(Player currentPlayer) {
+	public Color getColor(Player currentPlayer) {
 		if(currentPlayer.getColor().equals(Color.Black)==true)
 			return Color.Black;
 			else {
@@ -73,7 +77,7 @@ public class Othello{
 			}
 	}
 	
-	public Player BuscaJugador() {
+	public Player getCurrentPayer() {
 		return othello.getPlayer(playerTurn);
 	}
 	
@@ -85,14 +89,14 @@ public class Othello{
 			return true;
 		}
 	}
-	public void obtenerValors() {
-		Valors = input.integersCoordinates();
-		coordinate_x = Valors.x;
-		coordinate_y = Valors.y;
+	public void getCoordinates() {
+		Coordinate cordinate = input.integersCoordinates();
+		coordinate_x = cordinate.x;
+		coordinate_y = cordinate.y;
 	}
 	
 	public void setInput(KeyboardInput input) {
-		Othello.input = input;
+		this.input = input;
 	}
 
 	public void changeTurn() {
