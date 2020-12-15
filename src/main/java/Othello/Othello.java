@@ -96,6 +96,11 @@ public class Othello{
 		coordinate_y = cordinate.getY();
 	}
 	
+	//Added function
+	public Game getGame() {
+		return othello;
+	}
+	
 	public void setInput(KeyboardInput input) {
 		this.input = input;
 	}
